@@ -7,11 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 	<%
 		request.setCharacterEncoding("UTF-8");
 	
 		String id = request.getParameter("id");
-		//String id = request.getParameterValues("id")[];
 		String passwd = request.getParameter("passwd");
 		String name = request.getParameter("name");
 		String phone1 = request.getParameter("phone1");
