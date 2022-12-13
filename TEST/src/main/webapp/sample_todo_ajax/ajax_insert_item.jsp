@@ -13,7 +13,7 @@
 	int num = 0;
 	Statement statement = null;
 	
-	String sql = "INSERT INTO " + tableName + " (item, insertDate) VALUES ('" + item + "', noew())";
+	String sql = "INSERT INTO " + tableName + " (item, insertDate) VALUES ('" + item + "', now())";
 	
 	statement = conn.createStatement();
 	statement.executeUpdate(sql);
