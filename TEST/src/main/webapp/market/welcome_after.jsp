@@ -28,7 +28,7 @@
 		<div class="text-center">
 			<h3>
 				<%=tagline %>
-			</h3>
+			</h3> 
 		</div>
 	</div>
 	<footer class="container">
