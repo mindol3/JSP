@@ -10,7 +10,7 @@
 </head>
 <body>
 <%@ include file="menu.jsp"%>
-	<%!String greeting = "도서 쇼핑몰";
+	<%!String greeting = "웹 쇼핑몰";
 	String tagline = "Welcome to Web Market!";%>
 	<div class="jumbotron">
 		<div class="container">
