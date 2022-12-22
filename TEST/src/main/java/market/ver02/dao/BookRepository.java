@@ -6,7 +6,11 @@ import market.ver02.dto.Book;
 
 public class BookRepository {
 	private ArrayList<Book> listOfBooks = new ArrayList<Book>();
+	private static BookRepository instance = new BookRepository(); // 추가 부분
 	
+	public static BookRepository getInstance() { // 추가 부분
+		return instance;
+	}
 	public BookRepository() {
 		Book book1 = new Book("B123", "워런 버핏 머니 마인드", 17100);
 		book1.setAuthor("로버트 해그스트롬 저/오은미 역/이상건 감수");
@@ -66,5 +70,7 @@ public class BookRepository {
 		}
 		return bookBytId;
 	}
-	
+	public void addBook(Book book) { // 추가 부분
+		listOfBooks.add(book);
+	}
 }

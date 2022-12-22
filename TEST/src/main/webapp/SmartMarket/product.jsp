@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="market.ver01.dto.Product" %>
+<%-- 추가 부분 --%>
+<%@ page import="market.ver01.dao.ProductRepository" %>
 <jsp:useBean id="productDAO" class="market.ver01.dao.ProductRepository" scope="session"/>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="./resources/css/bootstrap.min.css" />
 <title>Insert title here</title>
 </head>
 <body>
@@ -18,7 +20,8 @@
 	</div>
 	<%
 		String id = request.getParameter("id");
-		Product product = productDAO.getProductById(id);
+		ProductRepository dao = ProductRepository.getInstance();
+		Product product = dao.getProductById(id);
 	%>
 	<div class="container">
 		<div class="row">

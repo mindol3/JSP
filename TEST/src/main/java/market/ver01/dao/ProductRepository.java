@@ -6,6 +6,11 @@ import java.util.ArrayList;
 
 public class ProductRepository {
 	private ArrayList<Product> listOfProducts = new ArrayList<Product>();
+	private static ProductRepository instance = new ProductRepository(); // 추가 부분
+	
+	public static ProductRepository getInstance() { // 추가 부분
+		return instance;
+	}
 	
 	public ProductRepository() {
 		Product phone = new Product("P1234", "iPhone 6s", 800000);
@@ -49,5 +54,9 @@ public class ProductRepository {
 			}
 		}
 		return productById;
+	}
+	
+	public void addProduct(Product product) { // 추가 부분
+		listOfProducts.add(product);
 	}
 }
