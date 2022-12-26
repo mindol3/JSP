@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="market.ver02.dto.Book" %>
+<%@ page import="market.ver02.dao.BookRepository" %>
 <jsp:useBean id="bookDAO" class="market.ver02.dao.BookRepository" scope="session"/>
 <!DOCTYPE html>
 <html>
@@ -13,15 +14,21 @@
 	<jsp:include page="menu.jsp"/>
 	<div class="jumbotron">
 		<div class="container">
-			<h1 calss="display=3">상품목록</h1>
+			<h1 class="display=3">상품목록</h1>
 		</div>
 	</div>
 	<%
 		String id = request.getParameter("id");
 		Book book = bookDAO.getBookBytId(id);
+		BookRepository dao = BookRepository.getInstance();
+
 	%>
 		<div class="container">
 		<div class="row">
+			<div class="col-md-5">
+				<img src="${pageContext.request.contextPath}/resources/images/<%=book.getFilename()%>"
+				style="width: 100% "/>
+			</div>
 			<div class="col-md-6">
 				<h3><%=book.getName() %></h3>
 				<p><b>저자</b> :<%=book.getAuthor() %>

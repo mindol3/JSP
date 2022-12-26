@@ -21,6 +21,8 @@ public class BookRepository {
 		book1.setTotalPages(0);
 		book1.setReleseDate(null);
 		book1.setCondition(null);
+		book1.setFilename("P1234.png");
+
 		
 		Book book2 = new Book("B1234", "빅데이터로 전망하는 대한민국 부동산의 미래", 16500);
 		book2.setAuthor("경제만랩 리서치팀, 오대열, 황한솔, 안주환, 황유상 저 외 1명");
@@ -31,7 +33,8 @@ public class BookRepository {
 		book2.setTotalPages(0);
 		book2.setReleseDate(null);
 		book2.setCondition(null);
-		
+		book2.setFilename("P1235.png");
+
 		Book book3 = new Book("B12345", "호암자전", 25200);
 		book3.setAuthor("이병철 저");
 		book3.setDescription("삼성 창업자 호암 이병철의 자전이다.");
@@ -41,7 +44,8 @@ public class BookRepository {
 		book3.setTotalPages(0);
 		book3.setReleseDate(null);
 		book3.setCondition(null);
-		
+		book3.setFilename("P1236.png");
+
 		listOfBooks.add(book1);
 		listOfBooks.add(book2);
 		listOfBooks.add(book3);

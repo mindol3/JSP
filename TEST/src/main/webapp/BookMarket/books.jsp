@@ -30,6 +30,8 @@
 					Book book = listOfbooks.get(i);
 			%>
 			<div>
+				<img src="${pageContext.request.contextPath}/resources/images/<%=book.getFilename()%>"
+				style = "width: 30%" alt="">
 				<h3>[<%=book.getCategory() %>] <%=book.getName() %></h3>
 				<p><%=book.getDescription() %>
 				<br>
