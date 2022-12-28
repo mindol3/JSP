@@ -4,6 +4,8 @@
 <%-- 추가 부분 --%>
 <%@ page import="market.ver01.dao.ProductRepository" %>
 <jsp:useBean id="productDAO" class="market.ver01.dao.ProductRepository" scope="session"/>
+<%@ page errorPage = "exceptionNoProductId.jsp" %>
+
 <!DOCTYPE html>
 <html>
 <head>
