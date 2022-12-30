@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="market.ver01.dto.Product" %>
-<%@ page import="market.ver01.dao.ProductRepository" %>
+<%@ page import="market.ver02.dto.Book" %>
+<%@ page import="market.ver02.dao.BookRepository" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,23 +41,23 @@
 					</tr>
 					<%
 						int sum = 0;
-					ArrayList<Product> cartList = (ArrayList<Product>) session.getAttribute("cartlist");
+					ArrayList<Book> cartList = (ArrayList<Book>) session.getAttribute("cartlist");
 					if (cartList == null) {
-						cartList = new ArrayList<Product>();
+						cartList = new ArrayList<Book>();
 						session.setAttribute("cartlist", cartList);
 					}
 					
 					for (int i = 0; i < cartList.size(); i++) { // 상품 리스트 하나씩 출력하기
-						Product product = cartList.get(i);
-						int total = product.getUnitPrice() * product.getQuantity();
+						Book book = cartList.get(i);
+						int total = book.getUnitPrice() * book.getQuantity();
 						sum = sum + total;
 					%>
 					<tr>
-						<td><%=product.getProductId()%> - <%=product.getPname()%></td>
-						<td><%=product.getUnitPrice()%></td>
-						<td><%=product.getQuantity()%></td>
+						<td><%=book.getBooktId()%> - <%=book.getName()%></td>
+						<td><%=book.getUnitPrice()%></td>
+						<td><%=book.getQuantity()%></td>
 						<td><%=total%></td>
-						<td> <span class="badge badge-danger btn" onclick="removeCartByID('<%=product.getProductId()%>')">삭제</span> </td>
+						<td> <span class="badge badge-danger btn" onclick="removeCartByID('<%=book.getBooktId()%>')">삭제</span> </td>
 					</tr>
 					<%
 					}
@@ -70,7 +70,7 @@
 						<th></th>
 					</tr>
 				</table>
-				<a href="./products.jsp" class="btn btn-secondary"> &laquo; 쇼핑 계속하기</a>
+				<a href="./books.jsp" class="btn btn-secondary"> &laquo; 쇼핑 계속하기</a>
 			</div>
 			<hr>
 		<form name="frmCart" method="post">

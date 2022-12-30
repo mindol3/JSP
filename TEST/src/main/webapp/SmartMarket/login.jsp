@@ -12,7 +12,6 @@
 			<h1 class="display-3">로그인</h1>
 		</div>
 	</div>
-	
 	<div class="container" align="center">
 		<div class="col-md-4 col-md-offset-4">
 			<h3 class="form-signin-heading">Please sign in</h3>
@@ -39,8 +38,6 @@
 				<button class="btn btn btn-lg btn-success btn-block" type="submit">로그인</button>			
 			</form>
 		</div>	
-	
-	
 	</div>
 </body>
 </html>
