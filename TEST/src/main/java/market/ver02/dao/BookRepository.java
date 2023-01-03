@@ -12,7 +12,7 @@ public class BookRepository {
 		return instance;
 	}
 	public BookRepository() {
-		Book book1 = new Book("B123", "워런 버핏 머니 마인드", 17100);
+		Book book1 = new Book("a111", "워런 버핏 머니 마인드", 17100);
 		book1.setAuthor("로버트 해그스트롬 저/오은미 역/이상건 감수");
 		book1.setDescription("누가 끝까지 미소 지을 것인가?");
 		book1.setPublisher("흐름출판");
@@ -21,7 +21,7 @@ public class BookRepository {
 		book1.setTotalPages(0);
 		book1.setReleseDate(null);
 		book1.setCondition(null);
-		book1.setFilename("P1234.png");
+		book1.setFilename("a111.png");
 
 		
 		Book book2 = new Book("B1234", "빅데이터로 전망하는 대한민국 부동산의 미래", 16500);

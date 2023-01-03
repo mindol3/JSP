@@ -12,6 +12,7 @@
 	request.setCharacterEncoding("UTF-8");
 
 	String realPath = request.getServletContext().getRealPath("resources/images");
+	
 	File dir = new File(realPath);
 	if(!dir.exists()) {
 		dir.mkdirs();
@@ -22,8 +23,6 @@
 	int maxSize = 5 * 1024 * 1024; // 최대 업로드될 파일의 크기 5Mb
 	
 	MultipartRequest multi = new MultipartRequest(request, realPath, maxSize, encType, new DefaultFileRenamePolicy());
-
-
 
 	String booktId = multi.getParameter("booktId");
 	String name = multi.getParameter("name");
@@ -51,39 +50,60 @@
 	else
 		stock = Long.valueOf(unitsInStock);
 	
-	long pages;
-	
-	if (totalPages.isEmpty())
-		pages = 0;
-	else
-		pages = Long.valueOf(totalPages);
-	
 	Enumeration files = multi.getFileNames();
 	String fname = (String) files.nextElement();
 	String fileName = multi.getFilesystemName(fname);
-	 
-	String sql = "insert into book values(?,?,?,?,?,?,?,?,?,?,?,?)";
 	
+	String sql = "select * from book where id = ?";
 	pstmt = conn.prepareStatement(sql);
 	pstmt.setString(1, booktId);
-	pstmt.setString(2, name);
-	pstmt.setInt(3, price);
-	pstmt.setString(4, author);
-	pstmt.setString(5, description);
-	pstmt.setString(6, publisher);
-	pstmt.setString(7, category);
-	pstmt.setLong(8, stock);
-	pstmt.setLong(9, pages);
-	pstmt.setString(10, releseDate);
-	pstmt.setString(11, condition);
-	pstmt.setString(12, fileName);
-	pstmt.executeUpdate();
-
-
+	rs= pstmt.executeQuery();
+	
+	if (rs.next()) {
+		if (fileName != null) {
+			sql = "UPDATE book SET name=?, unitPrice=?, author=?, description=?, publisher=?, category=?, " 
+			+ " unitsInStock=?, totalPages=?, releseDate=?, `condition`=?, fileName=? WHERE id=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, name);
+			pstmt.setInt(2, price);
+			pstmt.setString(3, author);
+			pstmt.setString(4, description);
+			pstmt.setString(5, publisher);
+			pstmt.setString(6, category);
+			pstmt.setLong(7, stock);
+			pstmt.setString(8, totalPages);
+			pstmt.setString(9, releseDate);
+			pstmt.setString(10, condition);
+			pstmt.setString(11, fileName);
+			pstmt.setString(12, booktId);
+			pstmt.executeUpdate();
+		} else {
+			sql = "UPDATE book SET name=?, unitPrice=?, author=?, description=?, publisher=?, category=?, " 
+					+ " unitsInStock=?, totalPages=?, releseDate=?, `condition`=? WHERE id=?";
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setString(1, name);
+					pstmt.setInt(2, price);
+					pstmt.setString(3, author);
+					pstmt.setString(4, description);
+					pstmt.setString(5, publisher);
+					pstmt.setString(6, category);
+					pstmt.setLong(7, stock);
+					pstmt.setString(8, totalPages);
+					pstmt.setString(9, releseDate);
+					pstmt.setString(10, condition);
+					pstmt.setString(11, booktId);
+					pstmt.executeUpdate();
+		}
+	}
+	
+	if (rs != null)
+		rs.close();
 	if (pstmt != null)
 		pstmt.close();
 	if (conn != null)
 		conn.close();
 	
-	response.sendRedirect("books.jsp");
+	response.sendRedirect("editBook.jsp?edit=update");
+		
+
 %>
