@@ -14,7 +14,7 @@
 <script type="text/javascript">
 	function deleteConfirm(id) {
 		if (confirm("해당 상품을 삭제합니다?") == true)
-			location.href = "./deleteProduct.jsp?id=" + id;
+			location.href = "./deleteBook.jsp?id=" + id;
 		else 
 			return;
 		}
@@ -55,7 +55,7 @@
 					<%
 						} else if (edit.equals("delete")) {
 					%>
-					<a href="#" onclick="deleteConfirm('<%=rs.getString("id")%>')" class="btn btn-danger" role="button">
+					<a href="" onclick="deleteConfirm('<%=rs.getString("id")%>')" class="btn btn-danger" role="button">
 					삭제 &raquo;</a>							
 					<%
 						}
